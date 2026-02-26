@@ -395,39 +395,6 @@
           </div>
         </section>
     </main>
-    <div class="modal-overlay">
-        <div class="modal">
-            <svg class="icon-close" width="8" height="8">
-              <use href="./images/icons.svg#icon-close"></use>
-            </svg>
-            <p>Leave your contacts and we will call you back</p>
-            <form class="form-contacts">
-                <label class="form-label">
-                    Name
-                    <input class="form-input" type="text" name="name" />
-                </label>
-                <label class="form-label">
-                    Phone
-                    <input class="form-input" type="tel" name="phone" />
-                </label>
-                <label class="form-label">
-                    Email
-                    <input class="form-input" type="email" name="email" />
-                </label>
-                <label class="form-label">
-                    Comment
-                    <input class="form-input-text" type="text" name="email" placeholder="Text input" />
-                </label>
-
-                <button class="send-btn" type="submit">
-                    Send
-                    </use>
-                    </svg>
-                </button>
-                </form>
-            </div>
-        </div>
-    </div>
     <footer class="page-footer">
       <div class="container">
         <div class="footer-logo">
@@ -488,5 +455,38 @@
       </div>
     </div>
     </footer>
+  <div class="backdrop is-open">
+    <div class="modal">
+        <button class="modal-btn" type="button" aria-label="Close modal button">
+            <svg class="icon-close" width="8" height="8">
+                <use href="./images/icons.svg#icon-close"></use>
+            </svg>
+        </button>
+        <p class="modal-slogan">Leave your contacts and we will call you back</p>
+        <form class="feedback-form" name="feedback" autocomplete="off" novalidate>
+            <div>
+            <label class="form-label" for="userName">Name</label>
+                <input class="form-input" type="text" id="userName" name="userName" />
+            </div>
+            <div>
+            <label class="form-label" for="userPhone">Phone</label>
+                <input class="form-input" type="tel" id="userPhone" name="userPhone" />
+            </div>
+            <div>
+            <label class="form-label" for="userEmail">Email</label>
+                <input class="form-input" type="email" id="userEmail" name="userEmail" />
+            </div>
+            <div>
+                <label for="userComment">Comment</label>
+                <textarea type="" id="" name="userComment"></textarea>
+            </div>
+            <div>
+                <label for="userAgreement">Agreement</label>
+                <input type="checkbox" id="userAgreement" name="userAgreement" />
+            </div>
+        </form>
+        <button class="feedback-form-btn" type="submit">Send</button>
+    </div>
+  </div>
 </body>
 </html>

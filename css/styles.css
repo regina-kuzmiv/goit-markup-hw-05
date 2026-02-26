@@ -399,49 +399,74 @@ body {
 }
 /* #endregion */
 
-/* #region Portfolio */
+/* #region Modal */
 
-.icon-close {
-    border-radius: 50%;
-    padding: 8px;
-    width: 24px;
-    height: 24px;
-
-    fill: #2E2F42;
-    background-color: #E7E9FC;
-    border: 1px solid #0000001A;
-    top: 0;
-    right: 0;
-}
-.form-contacts {
+.feedback-form {
     display: flex;
     flex-direction: column;
-    width: 360px;
-    height: 80px;
+    width: 100%
 }
 
-.modal-overlay {
+.backdrop {
     background-color: #2E2F4266;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition-property: opacity, visibility;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #FCFCFC;
     width: 408px;
-    height: 584px;
+    min-height: 584px;
     border-radius: 4px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.2);
     padding: 24px;
+
+    transition-property: opacity, transform;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal p {
+.modal-btn {
+    position: absolute;
+    border-radius: 50%;
+    top: 24px;
+    right: 24px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    fill: #2E2F42;
+    background-color: #E7E9FC;
+    border: 1px solid #0000001A;
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+    color: #fd9222;
+}
+
+.modal-btn-icon {
+    stroke: currentColor;
+}
+
+.backdrop:not(.is-open) .modal {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+.modal-slogan {
     text-decoration: none;
     font-family: "Roboto", sans-serif;
     color: #2E2F42;
@@ -450,16 +475,24 @@ body {
     line-height: 1.5;
     letter-spacing: 2%;
     text-align: center;
+    padding-top: 48px;
+    padding-bottom: 16px;
 }
 .form-label {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    color: #8E8F99;
 }
 .form-input {
     border: 1px solid #2E2F42;
     border-radius: 4px;
-    width: 360px;
+    width: 100%;
     height: 40px;
     background-color: #FCFCFC;
 }
@@ -470,7 +503,13 @@ body {
     height: 120px;
     background-color: #FCFCFC;
 }
-.send-btn {
+textarea {
+    width: 100%;
+    height: 120px;
+    resize: none;
+}
+.feedback-form-btn {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -481,6 +520,8 @@ body {
     line-height: 24px;
     letter-spacing: 4%;
     padding: 16px 32px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 4px;
     border: none;
     width: 169px;
@@ -542,7 +583,6 @@ body {
 }
 form {
     display: flex;
-    gap: 24px;
     width: 453px;
     height: 80px;
 }
