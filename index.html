@@ -480,10 +480,17 @@
                 <label class="form-label" for="userComment">Comment</label>
                 <textarea name="userComment" id="userComment" placeholder="Text input"></textarea>
             </div>
-            <div>
-                <label for="userAgreement"></label>
-                <input type="checkbox" id="userAgreement" name="userAgreement" />
-                I accept the terms and conditions of the Privacy Policy
+            <div class="checkbox-field">
+                <input class="checkbox-input" type="checkbox" id="privacy" name="privacy" value="true" />
+                <label class="checkbox-label" for="privacy">
+                    <span class="custom-checkbox">
+                        <svg class="custom-checkbox-icon" width="10" height="8">
+                          <use href="./images/icons.svg#icon-vector"></use>
+                        </svg>
+                    </span>
+                    I accept the terms and conditions of the
+                    <a class="privacy-link" href="">Privacy Policy</a>
+                </label>
             </div>
         <button class="feedback-form-btn" type="submit">Send</button>
         </form>
