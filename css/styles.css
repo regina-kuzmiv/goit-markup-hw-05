@@ -447,6 +447,10 @@ body {
 }
 
 .modal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: absolute;
     border-radius: 50%;
     top: 24px;
@@ -634,7 +638,7 @@ body {
 .page-footer .container {
     display: flex;
     align-items: baseline;
-
+    column-gap: 120px;
 }
 .footer-logo {
     padding: 0;
@@ -650,6 +654,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.32px;
+    margin-right: 120px;
 }
 .logo-light {
     text-decoration: none;
@@ -672,6 +677,7 @@ body {
     line-height: 1.5;
     letter-spacing: 0.32px;
     gap: 16px;
+    margin-left: auto;
 }
  .subscribe-form {
     display: flex;
@@ -749,7 +755,7 @@ body {
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.32px;
-    margin: 0 auto;
+    margin-right: 120px;
 }
 .social-media .social-links {
     gap: 16px;
