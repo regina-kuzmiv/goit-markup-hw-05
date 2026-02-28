@@ -409,7 +409,7 @@ body {
 }
 
 .backdrop {
-    background-color: #2E2F4266;
+    background-color: rgb(46, 47, 66, 0.4 );
     position: fixed;
     top: 0;
     left: 0;
@@ -433,6 +433,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+
     background-color: #FCFCFC;
     width: 408px;
     min-height: 584px;
@@ -443,6 +445,7 @@ body {
     transition-property: opacity, transform;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal-btn {
     position: absolute;
     border-radius: 50%;
@@ -451,22 +454,19 @@ body {
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     fill: #2E2F42;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #E7E9FC;
-    border: 1px solid #0000001A;
 }
-
 .modal-btn:hover,
 .modal-btn:focus {
-    color: #fd9222;
-}
-
-.modal-btn-icon {
-    stroke: currentColor;
+    fill: #FFFFFF;
+    background-color: #404BBF;
 }
 
 .backdrop:not(.is-open) .modal {
     transform: translate(-50%, -50%) scale(1.5);
 }
+
 .modal-slogan {
     text-decoration: none;
     font-family: "Roboto", sans-serif;
@@ -479,10 +479,10 @@ body {
     padding-top: 48px;
     padding-bottom: 16px;
 }
-.form-label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+
+.feedback-wrapper {
+    position: relative;
+
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
@@ -490,61 +490,97 @@ body {
     letter-spacing: 0.04em;
     color: #8E8F99;
 }
-.form-input {
-    border: 1px solid rgb(46, 47, 66, 40%);
+.feedback-label {
+    display: block;
+    margin-bottom: 4px;
+}
+.feedback-field {
+    position: relative;
+}
+.feedback-input {
+    border: 1px solid rgb(46, 47, 66, 0.4);
     border-radius: 4px;
+    outline: none;
     width: 100%;
     height: 40px;
     background-color: #FCFCFC;
-    padding: 4px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 11px 38px;
 }
-.form-input-text {
-    border: 1px solid #2E2F42;
-    border-radius: 4px;
-    width: 360px;
-    height: 120px;
-    background-color: #FCFCFC;
+.feedback-input:focus {
+    border-color: #4D5AE5;
 }
-.form-input:focus {
-    border: 1px solid #4D5AE5;
+.feedback-icon {
+    position: absolute;
+    fill: #2E2F42;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feedback-input:focus + .feedback-icon {
+    fill: #4D5AE5;
 }
 
-textarea {
+.feedback-comment {
     width: 100%;
     height: 120px;
+    padding: 8px 16px;;
+
+    font-size: 12px;
+
     resize: none;
+    outline: none;
     border: 1px solid rgb(46, 47, 66, 40%);
     border-radius: 4px;
     background-color: #FCFCFC;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-textarea::placeholder {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.04em;
-    color: rgb(46, 47, 66, 40%);
-    padding: 8px 16px;
-}
-textarea:focus-within {
+.feedback-comment:focus {
     border-color: #404BBF;
 }
-.checkbox-label {
+.feedback-comment::placeholder {
+    color: rgb(46, 47, 66, 0.4);
+}
+
+.feedback-agreement {
+    display: block;
+    font-size: 12px;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.04em;
-    color: #757575;
+    color: #8E8F99;
+    margin-top: 8px;
 }
-.custom-checkbox {
+
+.feedback-toggler {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     width: 16px;
     height: 16px;
+    margin-right: 8px;
+
     border-radius: 2px;
-    border: 1px solid rgb(46, 47, 66, 40%);
+    border: 1px solid rgb(46, 47, 66, 0.4);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: background-color, border-color;
+    cursor: pointer;
+}
+.feedback-checkbox:checked+.feedback-toggler {
+    background-color: #404BBF;
+    border-color: transparent;
+    fill: #F4F4FD;
+}
+.feedback-toggler-icon {
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feedback-checkbox:checked+.feedback-toggler>.feedback-toggler-icon {
+    opacity: 1;
 }
 .privacy-link {
     color: #4D5AE5;
@@ -564,6 +600,7 @@ textarea:focus-within {
     padding: 16px 32px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
     border-radius: 4px;
     border: none;
     width: 169px;
@@ -577,7 +614,7 @@ textarea:focus-within {
 .feedback-form-btn:hover,
 .feedback-form-btn:focus {
     color: #FFFFFF;
-    background-color: #31D0AA;
+    background-color: #404BBF;
 }
 
 /* #endregion */
